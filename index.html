@@ -72,13 +72,43 @@
       margin-top:40px;
     }
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:18px;
-      transition:.2s ease;
-    }
+   .card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow suave de fondo */
+.card::before{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background: radial-gradient(
+    circle,
+    rgba(0,229,255,0.08),
+    transparent 60%
+  );
+  transform: scale(0);
+  transition: 0.4s ease;
+}
+
+/* Hover efecto */
+.card:hover{
+  transform: translateY(-6px);
+  border-color: var(--accent2);
+  box-shadow: 0 10px 30px rgba(0,229,255,0.08);
+}
+
+.card:hover::before{
+  transform: scale(1);
+}
 
     .card:hover{
       transform:translateY(-4px);
