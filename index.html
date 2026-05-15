@@ -1,307 +1,290 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SKILLS LAB ⚡</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKILLS LAB ⚡</title>
 
-  <style>
-    :root{
-      --bg:#070B14;
-      --card:#101826;
-      --text:#ffffff;
-      --muted:#94A3B8;
-      --accent1:#7C3AED;
-      --accent2:#00E5FF;
-      --border:#1F2937;
-    }
+<style>
+:root{
+  --bg:#070B14;
+  --card:#101826;
+  --text:#ffffff;
+  --muted:#94A3B8;
+  --accent:#00E5FF;
+  --border:#1F2937;
+}
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+}
 
-    body{
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.5;
-    }
+body{
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
+}
 
-    .container{
+/* LOADER */
+#loader{
+  position:fixed;
+  inset:0;
+  background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  animation:fadeOut 1s ease forwards;
+  animation-delay:1.2s;
+}
+
+.loader-text{
+  color:var(--accent);
+  font-size:14px;
+  letter-spacing:2px;
+  opacity:0.9;
+}
+
+@keyframes fadeOut{
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
+/* LAYOUT */
+.container{
   max-width:1100px;
   margin:auto;
   padding:40px 20px;
 }
 
-    /* HERO */
-    .hero{
+/* HERO */
+.hero{
   text-align:center;
   padding:90px 20px 50px;
 }
 
-    .badge{
-      display:inline-block;
-      padding:6px 12px;
-      border:1px solid var(--border);
-      border-radius:20px;
-      color:var(--muted);
-      font-size:12px;
-      margin-bottom:20px;
-    }
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:20px;
+}
 
-    h1{
-      font-size:clamp(26px,5vw,44px);
-      line-height:1.2;
-      margin-bottom:15px;
-    }
+h1{
+  font-size:clamp(26px,5vw,44px);
+  line-height:1.2;
+  margin-bottom:15px;
+}
 
-   .hero p{
+.hero p{
   color:var(--muted);
   max-width:680px;
   margin:auto;
   font-size:16px;
-  line-height:1.6;
 }
 
-    /* GRID */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:15px;
-      margin-top:40px;
-    }
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:15px;
+  margin-top:40px;
+}
 
-   .card{
+/* CARD */
+.card{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:14px;
   padding:18px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  transition:.3s ease;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
 }
 
-/* Glow suave de fondo */
-.card::before{
-  content:"";
-  position:absolute;
-  top:-50%;
-  left:-50%;
-  width:200%;
-  height:200%;
-  background: radial-gradient(
-    circle,
-    rgba(0,229,255,0.08),
-    transparent 60%
-  );
-  transform: scale(0);
-  transition: 0.4s ease;
-}
-
-/* Hover efecto */
 .card:hover{
-  transform: translateY(-6px);
-  border-color: var(--accent2);
-  box-shadow: 0 10px 30px rgba(0,229,255,0.08);
+  transform:translateY(-4px);
+  border-color:var(--accent);
 }
 
-.card:hover::before{
-  transform: scale(1);
+/* ACTIVE STATE */
+.card.active{
+  border-color:var(--accent);
+  box-shadow:0 0 25px rgba(0,229,255,0.25);
+  transform:scale(1.02);
 }
 
-    .card:hover{
-      transform:translateY(-4px);
-      border-color:var(--accent2);
-    }
-
-    .card h3{
-      font-size:16px;
-      margin-bottom:8px;
-    }
-
-    .card p{
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    /* STATUS */
-    .status{
-      margin-top:50px;
-      text-align:center;
-      padding:30px 15px;
-      border-top:1px solid var(--border);
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .glow{
-      color:var(--accent2);
-      font-weight:bold;
-    }
-
-    /* MOBILE OPTIMIZATION */
-    @media (max-width:600px){
-
-      .hero{
-        padding:50px 15px 30px;
-      }
-
-      .grid{
-        grid-template-columns:1fr;
-      }
-
-      .card{
-        padding:16px;
-      }
-
-      h1{
-        font-size:24px;
-      }
-    }
+/* STATUS TAG */
 .status-tag{
   font-size:11px;
-  color:#94A3B8;
+  color:var(--muted);
   margin-bottom:10px;
-  opacity:0.6;
-  transition:0.3s ease;
   display:inline-block;
   padding:4px 10px;
-  border:1px solid #1F2937;
+  border:1px solid var(--border);
   border-radius:999px;
+  transition:.3s ease;
 }
 
 .card.active .status-tag{
-  color:#00E5FF;
-  opacity:1;
-  border-color:#00E5FF;
-  background: rgba(0,229,255,0.08);
+  color:var(--accent);
+  border-color:var(--accent);
+  background:rgba(0,229,255,0.08);
 }
 
-.card.active{
-  border-color: #00E5FF;
-  box-shadow: 0 0 25px rgba(0,229,255,0.25);
-  transform: scale(1.02);
+/* TEXT */
+.card h3{
+  font-size:16px;
+  margin-bottom:8px;
 }
 
-.card.active .status-tag{
-  color:#00E5FF;
-  opacity:1;
+.card p{
+  color:var(--muted);
+  font-size:13px;
 }
-  </style>
+
+/* STATUS FOOTER */
+.status{
+  margin-top:50px;
+  text-align:center;
+  padding:30px 15px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:13px;
+}
+
+.glow{
+  color:var(--accent);
+  font-weight:bold;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero{padding:50px 15px 30px;}
+  h1{font-size:24px;}
+  .grid{grid-template-columns:1fr;}
+}
+
+/* ANIMACIÓN ENTRADA */
+.fade-in{
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.6s ease;
+}
+</style>
 </head>
 
 <body>
-  
+
+<!-- LOADER -->
 <div id="loader">
   <div class="loader-text">SKILLS LAB iniciando...</div>
 </div>
-  
+
 <div class="container">
 
   <!-- HERO -->
   <section class="hero">
-
     <div class="badge">🧪 SKILLS LAB ACTIVO</div>
-
     <h1>Las skills de Claude que debes dominar para no quedarte atrás</h1>
-
-    <p>
-      Aprende las skills más útiles de Claude AI para crear, automatizar y trabajar más rápido sin tecnicismos.
-    </p>
-
+    <p>Aprende a usar IA para crear, automatizar y trabajar más rápido sin tecnicismos.</p>
   </section>
 
   <!-- SKILLS -->
   <section class="grid">
 
     <div class="card">
-  <div class="status-tag">● Skill habilitada</div>
-  <h3>📩 Respuestas de correos</h3>
-  <p>Redacta respuestas dentro de tu Gmail en borrador listas para enviar.</p>
-</div>
-
-     <div class="card">
-  <div class="status-tag">● Skill habilitada</div>
-  <h3>🎤 Presentaciones profesionales</h3>
-  <p>Convierte ideas en presentaciones listas en minutos.</p>
-</div>
-
-       <div class="card">
-  <div class="status-tag">● Skill habilitada</div>
-      <h3>📱 Carruseles para Instagram</h3>
-      <p>Crea carruseles personalizados con tu identidad.</p>
+      <div class="status-tag">● Skill habilitada</div>
+      <h3>📩 Correos automáticos</h3>
+      <p>Redacta respuestas en Gmail listas para enviar.</p>
     </div>
 
-        <div class="card">
-  <div class="status-tag">● Skill habilitada</div>
-      <h3>🧠 Propuestas para clientes</h3>
-      <p>Genera propuestas profesionales listas para enviar.</p>
+    <div class="card">
+      <div class="status-tag">● Skill habilitada</div>
+      <h3>🎤 Presentaciones</h3>
+      <p>Crea presentaciones profesionales en minutos.</p>
     </div>
 
-        <div class="card">
-  <div class="status-tag">● Skill habilitada</div>
-      <h3>📊 Tableros interactivos</h3>
-      <p>Convierte información en dashboards visuales dinámicos.</p>
+    <div class="card">
+      <div class="status-tag">● Skill habilitada</div>
+      <h3>📱 Carruseles IG</h3>
+      <p>Genera contenido optimizado para redes sociales.</p>
     </div>
 
-       <div class="card">
-  <div class="status-tag">● Skill habilitada</div>
-      <h3>🧭 Estrategia de contenido</h3>
-      <p>Diseña estrategias de contenido accionables.</p>
+    <div class="card">
+      <div class="status-tag">● Skill habilitada</div>
+      <h3>🧠 Propuestas</h3>
+      <p>Arma propuestas listas para clientes.</p>
+    </div>
+
+    <div class="card">
+      <div class="status-tag">● Skill habilitada</div>
+      <h3>📊 Dashboards</h3>
+      <p>Convierte datos en visualizaciones claras.</p>
+    </div>
+
+    <div class="card">
+      <div class="status-tag">● Skill habilitada</div>
+      <h3>🧭 Estrategia</h3>
+      <p>Diseña planes de contenido efectivos.</p>
     </div>
 
   </section>
 
-  <!-- STATUS -->
   <div class="status">
-    <span class="glow">● Creado por Jonatan Correa</span> · Consultor y Divulgador IA
+    <span class="glow">● SKILLS LAB SYSTEM ACTIVE</span>
   </div>
 
 </div>
+
+<!-- AUDIO -->
+<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
+
+<!-- SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
   const cards = document.querySelectorAll(".card");
+  const sound = document.getElementById("clickSound");
 
+  // SCROLL ANIMATION
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
+      if(entry.isIntersecting){
         entry.target.style.opacity = 1;
         entry.target.style.transform = "translateY(0)";
       }
     });
-  }, {
-    threshold: 0.2
-  });
+  }, {threshold:0.2});
 
   cards.forEach(card => {
+
     card.style.opacity = 0;
     card.style.transform = "translateY(20px)";
     card.style.transition = "0.6s ease";
     observer.observe(card);
+
+    // CLICK INTERACTION
+    card.addEventListener("click", function () {
+      if(sound){
+        sound.currentTime = 0;
+        sound.play();
+      }
+      this.classList.toggle("active");
+    });
+
   });
 
 });
-</script>
-  
-});
-</script>
-
-<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
-
-<script>
-document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener("click", function () {
-    
-    const sound = document.getElementById("clickSound");
-    sound.currentTime = 0;
-    sound.play();
-
-    this.classList.toggle("active");
-
-
 </script>
 
 </body>
