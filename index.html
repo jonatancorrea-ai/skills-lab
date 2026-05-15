@@ -212,42 +212,42 @@
   <!-- SKILLS -->
   <section class="grid">
 
-    <div class="card" onclick="this.classList.toggle('activa')">
+    <div class="card"
   
   <div class="status-tag">● Skill habilitada</div>
       <h3>📩 Respuestas de correos</h3>
       <p>Redacta respuestas dentro de tu Gmail en borrador listas para enviar.</p>
     </div>
 
-       <div class="card" onclick="this.classList.toggle('activa')">
+       <div class="card"
   
   <div class="status-tag">● Skill habilitada</div>
       <h3>🎤 Presentaciones profesionales</h3>
       <p>Convierte ideas en presentaciones listas en minutos.</p>
     </div>
 
-       <div class="card" onclick="this.classList.toggle('activa')">
+       <div class="card"
   
   <div class="status-tag">● Skill habilitada</div>
       <h3>📱 Carruseles para Instagram</h3>
       <p>Crea carruseles personalizados con tu identidad.</p>
     </div>
 
-        <div class="card" onclick="this.classList.toggle('activa')">
+        <div class="card"
   
   <div class="status-tag">● Skill habilitada</div>
       <h3>🧠 Propuestas para clientes</h3>
       <p>Genera propuestas profesionales listas para enviar.</p>
     </div>
 
-        <div class="card" onclick="this.classList.toggle('activa')">
+        <div class="card"
   
   <div class="status-tag">● Skill habilitada</div>
       <h3>📊 Tableros interactivos</h3>
       <p>Convierte información en dashboards visuales dinámicos.</p>
     </div>
 
-       <div class="card" onclick="this.classList.toggle('activa')">
+       <div class="card"
   
   <div class="status-tag">● Skill habilitada</div>
       <h3>🧭 Estrategia de contenido</h3>
@@ -287,5 +287,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+  
+});
+</script>
+
+<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
+
+<script>
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("click", function () {
+    
+    const sound = document.getElementById("clickSound");
+    sound.currentTime = 0;
+    sound.play();
+
+    this.classList.toggle("active");
+
+  });
+});
+</script>
+
+</body>
+</html>
 </body>
 </html>
