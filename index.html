@@ -160,7 +160,23 @@
         font-size:24px;
       }
     }
+.status-tag{
+  font-size:12px;
+  color:#94A3B8;
+  margin-bottom:10px;
+  opacity:0.7;
+  transition:0.3s ease;
+}
 
+.card.active{
+  border-color: #00E5FF;
+  box-shadow: 0 0 20px rgba(0,229,255,0.15);
+}
+
+.card.active .status-tag{
+  color:#00E5FF;
+  opacity:1;
+}
   </style>
 </head>
 
@@ -191,27 +207,37 @@
       <p>Redacta respuestas dentro de tu Gmail en borrador listas para enviar.</p>
     </div>
 
-    <div class="card">
+       <div class="card" onclick="this.classList.toggle('activa')">
+  
+  <div class="status-tag">● Skill habilitada</div>
       <h3>🎤 Presentaciones profesionales</h3>
       <p>Convierte ideas en presentaciones listas en minutos.</p>
     </div>
 
-    <div class="card">
+       <div class="card" onclick="this.classList.toggle('activa')">
+  
+  <div class="status-tag">● Skill habilitada</div>
       <h3>📱 Carruseles para Instagram</h3>
       <p>Crea carruseles personalizados con tu identidad.</p>
     </div>
 
-    <div class="card">
+        <div class="card" onclick="this.classList.toggle('activa')">
+  
+  <div class="status-tag">● Skill habilitada</div>
       <h3>🧠 Propuestas para clientes</h3>
       <p>Genera propuestas profesionales listas para enviar.</p>
     </div>
 
-    <div class="card">
+        <div class="card" onclick="this.classList.toggle('activa')">
+  
+  <div class="status-tag">● Skill habilitada</div>
       <h3>📊 Tableros interactivos</h3>
       <p>Convierte información en dashboards visuales dinámicos.</p>
     </div>
 
-    <div class="card">
+       <div class="card" onclick="this.classList.toggle('activa')">
+  
+  <div class="status-tag">● Skill habilitada</div>
       <h3>🧭 Estrategia de contenido</h3>
       <p>Diseña estrategias de contenido accionables.</p>
     </div>
