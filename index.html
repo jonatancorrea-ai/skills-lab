@@ -152,7 +152,7 @@ h1{
   font-size:13px;
 }
 
-/* 🔒 BLOQUEADAS (SAAS MODE) */
+/* 🔒 BLOQUEADAS */
 .card.locked{
   position:relative;
   opacity:0.75;
@@ -211,13 +211,6 @@ h1{
   .hero{padding:50px 15px 30px;}
   h1{font-size:24px;}
   .grid{grid-template-columns:1fr;}
-}
-
-/* ANIMACIÓN ENTRADA */
-.fade-in{
-  opacity:0;
-  transform:translateY(20px);
-  transition:0.6s ease;
 }
 </style>
 </head>
@@ -310,6 +303,21 @@ h1{
       <p>Optimiza campañas publicitarias para mejorar conversiones y rendimiento.</p>
     </div>
 
+    <!-- 🆕 NUEVAS 2 SKILLS -->
+    <div class="card locked">
+      <div class="lock-badge">🔒 Próximamente</div>
+      <div class="status-tag">● En desarrollo</div>
+      <h3>🧲 Hooks Creator</h3>
+      <p>Convierte ideas en ganchos virales listos para redes sociales y anuncios.</p>
+    </div>
+
+    <div class="card locked">
+      <div class="lock-badge">🔒 Próximamente</div>
+      <div class="status-tag">● En desarrollo</div>
+      <h3>📰 Creador de newsletters</h3>
+      <p>Transforma ideas en newsletters listas para enviar a tu audiencia.</p>
+    </div>
+
   </section>
 
   <div class="status">
@@ -317,45 +325,6 @@ h1{
   </div>
 
 </div>
-
-<!-- AUDIO -->
-<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
-
-<!-- SCRIPT -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  const cards = document.querySelectorAll(".card");
-  const sound = document.getElementById("clickSound");
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = "translateY(0)";
-      }
-    });
-  }, {threshold:0.2});
-
-  cards.forEach(card => {
-
-    card.style.opacity = 0;
-    card.style.transform = "translateY(20px)";
-    card.style.transition = "0.6s ease";
-    observer.observe(card);
-
-    card.addEventListener("click", function () {
-      if(sound){
-        sound.currentTime = 0;
-        sound.play();
-      }
-      this.classList.toggle("active");
-    });
-
-  });
-
-});
-</script>
 
 </body>
 </html>
