@@ -152,6 +152,45 @@ h1{
   font-size:13px;
 }
 
+/* 🔒 BLOQUEADAS (SAAS MODE) */
+.card.locked{
+  position:relative;
+  opacity:0.75;
+  filter:grayscale(25%);
+  cursor:not-allowed;
+}
+
+.card.locked:hover{
+  transform:translateY(-2px);
+}
+
+.card.locked::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(7,11,20,0.55);
+  backdrop-filter: blur(6px);
+  border-radius:14px;
+}
+
+.lock-badge{
+  position:absolute;
+  top:12px;
+  right:12px;
+  font-size:11px;
+  padding:4px 10px;
+  border:1px solid var(--accent);
+  color:var(--accent);
+  border-radius:999px;
+  background:rgba(0,229,255,0.08);
+  z-index:2;
+}
+
+.card.locked h3,
+.card.locked p{
+  opacity:0.6;
+}
+
 /* STATUS FOOTER */
 .status{
   margin-top:50px;
@@ -199,7 +238,7 @@ h1{
     <p>Aprende a usar IA para crear, automatizar y trabajar más rápido sin tecnicismos.</p>
   </section>
 
-  <!-- SKILLS -->
+  <!-- SKILLS ACTIVAS -->
   <section class="grid">
 
     <div class="card">
@@ -240,6 +279,39 @@ h1{
 
   </section>
 
+  <!-- 🔒 BLOQUEADAS -->
+  <section class="grid">
+
+    <div class="card locked">
+      <div class="lock-badge">🔒 Próximamente</div>
+      <div class="status-tag">● En desarrollo</div>
+      <h3>🧠 Estratega creativa de campañas</h3>
+      <p>Diseña estrategias publicitarias completas combinando creatividad y objetivos de negocio.</p>
+    </div>
+
+    <div class="card locked">
+      <div class="lock-badge">🔒 Próximamente</div>
+      <div class="status-tag">● En desarrollo</div>
+      <h3>📲 Especialista en Social Selling</h3>
+      <p>Convierte redes sociales en un sistema de ventas mediante contenido y posicionamiento estratégico.</p>
+    </div>
+
+    <div class="card locked">
+      <div class="lock-badge">🔒 Próximamente</div>
+      <div class="status-tag">● En desarrollo</div>
+      <h3>🔍 Sistema de investigación inteligente</h3>
+      <p>Analiza información compleja y la convierte en insights accionables en segundos.</p>
+    </div>
+
+    <div class="card locked">
+      <div class="lock-badge">🔒 Próximamente</div>
+      <div class="status-tag">● En desarrollo</div>
+      <h3>📈 Optimización de campañas</h3>
+      <p>Optimiza campañas publicitarias para mejorar conversiones y rendimiento.</p>
+    </div>
+
+  </section>
+
   <div class="status">
     <span class="glow">● Creado por Jonatan Correa · 2026</span>
   </div>
@@ -256,7 +328,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const cards = document.querySelectorAll(".card");
   const sound = document.getElementById("clickSound");
 
-  // SCROLL ANIMATION
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
@@ -273,7 +344,6 @@ document.addEventListener("DOMContentLoaded", function () {
     card.style.transition = "0.6s ease";
     observer.observe(card);
 
-    // CLICK INTERACTION
     card.addEventListener("click", function () {
       if(sound){
         sound.currentTime = 0;
